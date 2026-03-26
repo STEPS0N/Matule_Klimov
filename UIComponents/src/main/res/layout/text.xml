@@ -9,16 +9,26 @@
         style="@style/editText_regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/text_default"
         android:hint="Ввод"
+        android:padding="15sp"
         android:paddingTop="16dp"
         android:paddingBottom="15dp"
-        android:background="@drawable/text_default"
-        android:padding="15sp"
         android:stateListAnimator="@null"
         android:textAllCaps="false"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:textColor="#ff0000"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

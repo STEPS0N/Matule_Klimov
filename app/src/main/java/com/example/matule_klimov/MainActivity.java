@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.uicomponents.button.BthBig;
 import com.example.uicomponents.button.BthCustom;
+import com.example.uicomponents.text.TextBig;
+import com.example.uicomponents.text.TextCustom;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,10 +26,16 @@ public class MainActivity extends AppCompatActivity {
         BthBig btnTertiary = findViewById(R.id.btnTertiary);
         BthBig btnSecondary = findViewById(R.id.btnSecondary);
 
+        TextBig textDefault = findViewById(R.id.textDefault);
+        TextBig text = findViewById(R.id.textDefaultTwo);
+
         btnPrimary.init("Отправить", BthCustom.TypeButton.PRIMARY);
         btnEnable.setEnabled(false);
         btnTertiary.init("Авторизоваться", BthCustom.TypeButton.TERTIARY);
         btnSecondary.init("Забыли пароль?", BthCustom.TypeButton.SECONDARY);
+
+        textDefault.init("", TextCustom.TypeText.DEFAULT);
+        text.init("", TextCustom.TypeText.DEFAULT);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

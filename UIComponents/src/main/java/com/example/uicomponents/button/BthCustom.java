@@ -48,6 +48,7 @@ public class BthCustom extends ConstraintLayout {
 
     public void init(String value, TypeButton type) {
         Btn.setText(value);
+        Btn.setEnabled(true);
 
         if (type == TypeButton.PRIMARY || type == TypeButton.ON) {
             Btn.setBackgroundResource(R.drawable.btn_primary);
