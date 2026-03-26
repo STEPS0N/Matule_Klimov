@@ -2,8 +2,11 @@ package com.example.uicomponents.text;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.text.InputType;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,7 +23,7 @@ public class TextCustom extends ConstraintLayout {
     public TextView message;
 
     public enum TypeText {
-        DEFAULT, HOVER, ERROR;
+        DEFAULT, HOVER, ERROR, DATE;
     }
 
     public TextCustom(@NonNull Context context) {
@@ -49,18 +52,25 @@ public class TextCustom extends ConstraintLayout {
 
     public void init(String value, TypeText type) {
         Text.setText(value);
-
         if (type == TypeText.DEFAULT) {
             Text.setBackgroundResource(R.drawable.text_default);
             Text.setTextColor(Color.parseColor("#000000"));
+            NameListener();
         } else if (type == TypeText.HOVER) {
             Text.setBackgroundResource(R.drawable.text_hover);
             Text.setTextColor(Color.parseColor("#000000"));
+            NameListener();
         } else if (type == TypeText.ERROR) {
             Text.setBackgroundResource(R.drawable.text_error);
             Text.setTextColor(Color.parseColor("#000000"));
+            NameListener();
+        } else if (type == TypeText.DATE) {
+            Text.setBackgroundResource(R.drawable.text_default);
+            DateListener();
         }
+    }
 
+    private void NameListener() {
         Text.setOnFocusChangeListener((v, hasFocus) -> {
             if (hasFocus) {
                 Text.setBackgroundResource(R.drawable.text_hover);
@@ -72,6 +82,26 @@ public class TextCustom extends ConstraintLayout {
                 } else if (Text.getText().toString().trim().matches("\\d+")) {
                     Text.setBackgroundResource(R.drawable.text_error);
                     message.setText("Не корректный ввод значений");
+                } else {
+                    Text.setBackgroundResource(R.drawable.text_default);
+                    message.setText("");
+                }
+            }
+        });
+    }
+
+    private void DateListener() {
+        Text.setOnFocusChangeListener((v, hasFocus) -> {
+            if (hasFocus) {
+                Text.setBackgroundResource(R.drawable.text_hover);
+                message.setText("");
+            } else {
+                if (Text.getText().toString().trim().isEmpty()) {
+                    Text.setBackgroundResource(R.drawable.text_error);
+                    message.setText("Поле не может быть пустым");
+                } else if (!Text.getText().toString().trim().matches("\\d{2}\\.\\d{2}\\.\\d{4}")) {
+                    Text.setBackgroundResource(R.drawable.text_error);
+                    message.setText("Введите дату в формате ДД.ММ.ГГГГ");
                 } else {
                     Text.setBackgroundResource(R.drawable.text_default);
                     message.setText("");

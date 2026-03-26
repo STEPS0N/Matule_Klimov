@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         BthBig btnSecondary = findViewById(R.id.btnSecondary);
 
         TextBig textDefault = findViewById(R.id.textDefault);
-        TextBig text = findViewById(R.id.textDefaultTwo);
+        TextBig textDate = findViewById(R.id.textDefaultTwo);
 
         btnPrimary.init("Отправить", BthCustom.TypeButton.PRIMARY);
         btnEnable.setEnabled(false);
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         btnSecondary.init("Забыли пароль?", BthCustom.TypeButton.SECONDARY);
 
         textDefault.init("", TextCustom.TypeText.DEFAULT);
-        text.init("", TextCustom.TypeText.DEFAULT);
+        textDate.init("", TextCustom.TypeText.DATE);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
